@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HelpDeskApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230208191451_IntialCreate")]
-    partial class IntialCreate
+    [Migration("20230209170734_HelpDesk")]
+    partial class HelpDesk
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -67,7 +67,17 @@ namespace HelpDeskApp.Migrations
                     b.Property<DateTime>("createdAt")
                         .HasColumnType("TEXT");
 
+                    b.Property<int?>("responsibleUserID")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("ticketOwnerID")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("ID");
+
+                    b.HasIndex("responsibleUserID");
+
+                    b.HasIndex("ticketOwnerID");
 
                     b.ToTable("Tickets");
                 });
@@ -99,6 +109,21 @@ namespace HelpDeskApp.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("HelpDeskApp.Models.Tickets", b =>
+                {
+                    b.HasOne("HelpDeskApp.Models.Users", "responsibleUser")
+                        .WithMany()
+                        .HasForeignKey("responsibleUserID");
+
+                    b.HasOne("HelpDeskApp.Models.Users", "ticketOwner")
+                        .WithMany()
+                        .HasForeignKey("ticketOwnerID");
+
+                    b.Navigation("responsibleUser");
+
+                    b.Navigation("ticketOwner");
                 });
 #pragma warning restore 612, 618
         }

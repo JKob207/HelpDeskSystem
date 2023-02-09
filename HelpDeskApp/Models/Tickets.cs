@@ -19,5 +19,7 @@ namespace HelpDeskApp.Models
         public int Priority { get; set; }
         [Required]
         public DateTime createdAt { get; set; }
+        public Users responsibleUser { get; set; }
+        public Users ticketOwner { get; set; }
     }
 }

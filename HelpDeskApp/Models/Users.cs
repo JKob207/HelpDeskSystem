@@ -22,5 +22,7 @@ namespace HelpDeskApp.Models
         public bool isAdmin { get; set; }
         [Required]
         public bool isDeleted { get; set; }
+        IList<Tickets> responsibleUser { get; set; }
+        IList<Tickets> taskOwner { get; set; }
     }
 }

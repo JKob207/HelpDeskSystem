@@ -14,5 +14,6 @@ namespace HelpDeskApp.Models
         public int ID { get; set; }
         [Required]
         public string Name { get; set; }
+        IList<Tickets> Tickets { get; set; }
     }
 }
