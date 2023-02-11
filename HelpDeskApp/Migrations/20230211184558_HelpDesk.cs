@@ -41,7 +41,7 @@ namespace HelpDeskApp.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Login = table.Column<string>(type: "TEXT", nullable: false),
                     Email = table.Column<string>(type: "TEXT", nullable: false),
-                    Password = table.Column<string>(type: "TEXT", nullable: false),
+                    Password = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
                     isAdmin = table.Column<bool>(type: "INTEGER", nullable: false),
                     isDeleted = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
@@ -61,11 +61,25 @@ namespace HelpDeskApp.Migrations
                     Priority = table.Column<int>(type: "INTEGER", nullable: false),
                     createdAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     responsibleUserID = table.Column<int>(type: "INTEGER", nullable: true),
-                    ticketOwnerID = table.Column<int>(type: "INTEGER", nullable: true)
+                    ticketOwnerID = table.Column<int>(type: "INTEGER", nullable: true),
+                    ticketStatusID = table.Column<int>(type: "INTEGER", nullable: true),
+                    ticketCategoryID = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Tickets", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Tickets_TicketCategories_ticketCategoryID",
+                        column: x => x.ticketCategoryID,
+                        principalTable: "TicketCategories",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Tickets_TicketStatuses_ticketStatusID",
+                        column: x => x.ticketStatusID,
+                        principalTable: "TicketStatuses",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Tickets_Users_responsibleUserID",
                         column: x => x.responsibleUserID,
@@ -86,18 +100,28 @@ namespace HelpDeskApp.Migrations
                 column: "responsibleUserID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Tickets_ticketCategoryID",
+                table: "Tickets",
+                column: "ticketCategoryID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Tickets_ticketOwnerID",
                 table: "Tickets",
                 column: "ticketOwnerID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tickets_ticketStatusID",
+                table: "Tickets",
+                column: "ticketStatusID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "TicketCategories");
+                name: "Tickets");
 
             migrationBuilder.DropTable(
-                name: "Tickets");
+                name: "TicketCategories");
 
             migrationBuilder.DropTable(
                 name: "TicketStatuses");

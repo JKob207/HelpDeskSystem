@@ -21,5 +21,7 @@ namespace HelpDeskApp.Models
         public DateTime createdAt { get; set; }
         public Users responsibleUser { get; set; }
         public Users ticketOwner { get; set; }
+        public TicketStatuses ticketStatus { get; set; }
+        public TicketCategories ticketCategory { get; set; }
     }
 }

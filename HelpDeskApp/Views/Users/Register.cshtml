@@ -1,0 +1,47 @@
+﻿@using HelpDeskApp.Models
+@model Users
+
+<h1>Register new user</h1>
+<div class="row">
+    <div class="col-sm-12">
+        @using (Html.BeginForm("Register", "Users", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+        {
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <p>@Html.ValidationMessageFor(m => m.Login)</p>
+                        <label>Login </label>
+                        @Html.TextBoxFor(m => m.Login, "", new { @class = "form-control", @placeholder = "", @id = "Login" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <p>@Html.ValidationMessageFor(m => m.Email)</p>
+                        <label>Email </label>
+                        @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control", @placeholder = "", @id = "Email" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <p>@Html.ValidationMessageFor(m => m.Password)</p>
+                        <label>Password </label>
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

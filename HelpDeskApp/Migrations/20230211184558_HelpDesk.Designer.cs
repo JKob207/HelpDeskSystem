@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HelpDeskApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230209170734_HelpDesk")]
+    [Migration("20230211184558_HelpDesk")]
     partial class HelpDesk
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -70,14 +70,24 @@ namespace HelpDeskApp.Migrations
                     b.Property<int?>("responsibleUserID")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("ticketCategoryID")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int?>("ticketOwnerID")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("ticketStatusID")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("ID");
 
                     b.HasIndex("responsibleUserID");
 
+                    b.HasIndex("ticketCategoryID");
+
                     b.HasIndex("ticketOwnerID");
+
+                    b.HasIndex("ticketStatusID");
 
                     b.ToTable("Tickets");
                 });
@@ -98,6 +108,7 @@ namespace HelpDeskApp.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
+                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("isAdmin")
@@ -117,13 +128,25 @@ namespace HelpDeskApp.Migrations
                         .WithMany()
                         .HasForeignKey("responsibleUserID");
 
+                    b.HasOne("HelpDeskApp.Models.TicketCategories", "ticketCategory")
+                        .WithMany()
+                        .HasForeignKey("ticketCategoryID");
+
                     b.HasOne("HelpDeskApp.Models.Users", "ticketOwner")
                         .WithMany()
                         .HasForeignKey("ticketOwnerID");
 
+                    b.HasOne("HelpDeskApp.Models.TicketStatuses", "ticketStatus")
+                        .WithMany()
+                        .HasForeignKey("ticketStatusID");
+
                     b.Navigation("responsibleUser");
 
+                    b.Navigation("ticketCategory");
+
                     b.Navigation("ticketOwner");
+
+                    b.Navigation("ticketStatus");
                 });
 #pragma warning restore 612, 618
         }

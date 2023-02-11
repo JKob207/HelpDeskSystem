@@ -69,7 +69,10 @@ namespace HelpDeskApp
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Test}/{action=Index}/{id?}");
+                    pattern: "{controller=Users}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "tickets",
+                    pattern: "{controller=Tickets}/{action=Index}/{id?}");
             });
         }
     }
