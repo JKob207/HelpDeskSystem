@@ -1,0 +1,70 @@
+﻿@using HelpDeskApp.Models
+@model Tickets
+
+<h1>Here you can add tickets!</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            @using (Html.BeginForm("AddTicket", "Tickets", FormMethod.Post))
+            {
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Title </label>
+                            @Html.TextBoxFor(m => m.Title, "", new { @class = "form-control", @placeholder = "", @id = "Title" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Descriptions </label>
+                            @Html.TextAreaFor(m => m.Descriptions)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Ticket category </label>
+                            <select asp-for="ticketCategory" asp-items="@((List<SelectListItem>)ViewData["Categories"])" name="ticketCategory">
+                                <option value="">Pick one</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Priority </label>
+                            <select asp-for="Priority" asp-items="@((List<SelectListItem>)ViewData["Numbers"])" name="priority">
+                                <option value="">Pick one</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Responsible user </label>
+                            <select asp-for="responsibleUser" asp-items="@((List<SelectListItem>)ViewData["Users"])" name="responsibleUser">
+                                <option value="">Pick one</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div>
+                        <button type="submit" class="btn btn-primary">Add</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

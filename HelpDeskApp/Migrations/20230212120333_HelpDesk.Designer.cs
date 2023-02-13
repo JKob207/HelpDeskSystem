@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HelpDeskApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230211184558_HelpDesk")]
+    [Migration("20230212120333_HelpDesk")]
     partial class HelpDesk
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

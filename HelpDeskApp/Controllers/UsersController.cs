@@ -43,9 +43,9 @@ namespace HelpDeskApp.Controllers
                 {
                     if (status.isAdmin)
                     {
-                        return RedirectToAction("ATicketPanel", "Tickets", new { user = status } );
+                        return RedirectToAction("ATicketPanel", "Tickets", new { userID = status.ID } );
                     }
-                    return RedirectToAction("TicketPanel", "Tickets", new { user = status });
+                    return RedirectToAction("TicketPanel", "Tickets", new { userID = status.ID });
                 }else
                 {
                     return View();
