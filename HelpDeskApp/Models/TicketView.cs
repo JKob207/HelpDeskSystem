@@ -18,6 +18,7 @@ namespace HelpDeskApp.Models
         public int TicketPriority { get; set; }
         [Display(Name = "Created at")]
         public DateTime TicketCreatedAt { get; set; }
+        public bool isDeleted { get; set; }
         [Display(Name = "Responsible user")]
         public string responsibleUser { get; set; }
         [Display(Name = "Ticket owner")]

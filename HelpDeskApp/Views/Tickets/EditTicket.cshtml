@@ -1,0 +1,76 @@
+﻿@model HelpDeskApp.Models.TicketView
+
+<h1>Edit ticket</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            @using (Html.BeginForm("EditTicketAction", "Tickets", FormMethod.Post))
+            {
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            @Html.HiddenFor(m => m.TicketID)
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Title </label>
+                            @Html.TextBoxFor(m => m.TickietTitle, "", new { @class = "form-control", @placeholder = "", @id = "Title", @Value = Model.TickietTitle.ToString() })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Description </label>
+                            @Html.TextAreaFor(m => m.TicketDescriptions, new { @class = "form-control", @placeholder = "", @id = "Descriptions", @Value = Model.TicketDescriptions.ToString() })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Ticket category </label>
+                            <select asp-for="ticketCategory" asp-items="@((List<SelectListItem>)ViewData["Categories"])" name="ticketCategory">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Priority </label>
+                            <select asp-for="TicketPriority" asp-items="@((List<SelectListItem>)ViewData["Numbers"])" name="priority">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Responsible user </label>
+                            <select asp-for="responsibleUser" asp-items="@((List<SelectListItem>)ViewData["Users"])" name="responsibleUser">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Status </label>
+                            <select asp-for="ticketStatus" asp-items="@((List<SelectListItem>)ViewData["Statuses"])" name="ticketStatus">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

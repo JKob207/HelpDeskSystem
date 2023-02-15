@@ -1,0 +1,36 @@
+﻿@model IEnumerable<HelpDeskApp.Models.Users>
+
+<h1>Manage user panel</h1>
+<div class="container">
+    <div class="row">
+        <a class="btn btn-danger" asp-controller="Tickets" asp-action="BackToTicketPanel">Back to ticket panel</a>
+    </div>
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.ID)</th>
+                    <th>@Html.DisplayNameFor(m => m.Login)</th>
+                    <th>@Html.DisplayNameFor(m => m.Email)</th>
+                    <th>@Html.DisplayNameFor(m => m.isAdmin)</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Users user in Model)
+                {
+                    <tr>
+                        <td>@user.ID</td>
+                        <td>@user.Login</td>
+                        <td>@user.Email</td>
+                        <td>@user.isAdmin</td>
+                        <td>
+                            <a class="link-danger" asp-controller="Users" asp-action="MakeAdmin" asp-route-id="@user.ID">Make admin</a>
+                            <a class="link-danger" asp-controller="Users" asp-action="DeleteUser" asp-route-id="@user.ID">Delete user</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

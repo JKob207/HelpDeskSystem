@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HelpDeskApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230212120333_HelpDesk")]
+    [Migration("20230214191355_HelpDesk")]
     partial class HelpDesk
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -66,6 +66,9 @@ namespace HelpDeskApp.Migrations
 
                     b.Property<DateTime>("createdAt")
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("isDeleted")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int?>("responsibleUserID")
                         .HasColumnType("INTEGER");

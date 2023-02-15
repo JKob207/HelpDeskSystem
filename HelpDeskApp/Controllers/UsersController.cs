@@ -87,5 +87,37 @@ namespace HelpDeskApp.Controllers
                 return View();
             }
         }
+
+        public IActionResult AManageUsers()
+        {
+            List<Users> usersList = new List<Users>();
+            usersList = _context.Users.Where(u => u.isDeleted != true).ToList();
+            return View(usersList);
+        }
+
+        [Route("/Users/MakeAdmin/{id}")]
+        public IActionResult MakeAdmin(int id)
+        {
+            var user = _context.Users.Where(m => m.ID == id).FirstOrDefault();
+            user.isAdmin = true;
+            _context.SaveChanges();
+            int userID = int.Parse(TempData["currentUserID"].ToString());
+            return RedirectToAction("ATicketPanel", "Tickets", new { userID = userID });
+        }
+
+        [Route("/Users/DeleteUser/{id}")]
+        public IActionResult DeleteUser(int id)
+        {
+            var user = _context.Users.Where(m => m.ID == id).FirstOrDefault();
+            var ticketsToDelete = _context.Tickets.Where(m => m.ticketOwner == user).ToList();
+            user.isDeleted = true;
+            foreach(Tickets t in ticketsToDelete)
+            {
+                t.isDeleted = true;
+            }
+            _context.SaveChanges();
+            int userID = int.Parse(TempData["currentUserID"].ToString());
+            return RedirectToAction("ATicketPanel", "Tickets", new { userID = userID });
+        }
     }
 }

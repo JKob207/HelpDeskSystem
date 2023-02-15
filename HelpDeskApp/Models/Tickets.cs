@@ -24,6 +24,7 @@ namespace HelpDeskApp.Models
         public int Priority { get; set; }
         [Display(Name = "Created at")]
         public DateTime createdAt { get; set; }
+        public bool isDeleted { get; set; }
         [Display(Name = "Responsible user")]
         public Users responsibleUser { get; set; }
         [Display(Name = "Ticket owner")]

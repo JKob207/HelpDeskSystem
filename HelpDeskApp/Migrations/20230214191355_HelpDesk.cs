@@ -60,6 +60,7 @@ namespace HelpDeskApp.Migrations
                     Descriptions = table.Column<string>(type: "TEXT", nullable: true),
                     Priority = table.Column<int>(type: "INTEGER", nullable: false),
                     createdAt = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    isDeleted = table.Column<bool>(type: "INTEGER", nullable: false),
                     responsibleUserID = table.Column<int>(type: "INTEGER", nullable: true),
                     ticketOwnerID = table.Column<int>(type: "INTEGER", nullable: true),
                     ticketStatusID = table.Column<int>(type: "INTEGER", nullable: true),

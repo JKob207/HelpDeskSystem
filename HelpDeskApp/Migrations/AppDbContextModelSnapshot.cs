@@ -65,6 +65,9 @@ namespace HelpDeskApp.Migrations
                     b.Property<DateTime>("createdAt")
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("isDeleted")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int?>("responsibleUserID")
                         .HasColumnType("INTEGER");
 
