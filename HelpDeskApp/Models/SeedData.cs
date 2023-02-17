@@ -20,7 +20,7 @@ namespace HelpDeskApp.Models
                     };
 
                 var user = new Users { Login = "user", Email = "test@test.pl", Password = "zaq1@WSX", isAdmin = false, isDeleted = false };
-                var admin = new Users { Login = "admin", Email = "admin@test.pl", Password = "pass", isAdmin = true, isDeleted = false };
+                var admin = new Users { Login = "admin", Email = "admin@test.pl", Password = "qwerty1234", isAdmin = true, isDeleted = false };
                 var statusNew = new TicketStatuses { Name = "New" };
                 var statusAccepted = new TicketStatuses { Name = "Accepted" };
                 var statusRejected = new TicketStatuses { Name = "Rejected" };
