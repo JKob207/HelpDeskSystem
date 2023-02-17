@@ -1,16 +1,19 @@
 ﻿@model IEnumerable<HelpDeskApp.Models.TicketView>
+@{
+    ViewData["Title"] = "Created tickets";
+}
 
-<h1>User ticket panel</h1>
+<h1 class="text-center p-1">User ticket panel</h1>
 
 <div class="container">
-    <div class="row">
+    <div class="row justify-content-between">
         <a class="btn btn-info" asp-controller="Tickets" asp-action="AddTicket">Create ticket</a>
-        <a class="btn btn-link" asp-controller="Tickets" asp-action="BackToTicketPanel">Back to ticket panel</a>
+        <a class="btn btn-success" asp-controller="Tickets" asp-action="BackToTicketPanel">Back to ticket panel</a>
     </div>
     <div class="row">
-        <h2>Ticket created by you</h2>
-        <table class="table">
-            <thead>
+        <h2 class="m-3 p-1">Ticket created by you</h2>
+        <table class="table table-striped">
+            <thead class="table-dark">
                 <tr>
                     <th>@Html.DisplayNameFor(m => m.TicketID)</th>
                     <th>@Html.DisplayNameFor(m => m.TickietTitle)</th>
@@ -26,20 +29,20 @@
             <tbody>
                 @foreach (TicketView ticket in Model)
                 {
-                <tr>
-                    <td>@ticket.TicketID</td>
-                    <td>@ticket.TickietTitle</td>
-                    <td>@ticket.TicketDescriptions</td>
-                    <td>@ticket.TicketPriority</td>
-                    <td>@ticket.TicketCreatedAt</td>
-                    <td>@ticket.responsibleUser</td>
-                    <td>@ticket.ticketCategory</td>
-                    <td>@ticket.ticketStatus</td>
-                    <td>
-                        <a class="link-danger" asp-controller="Tickets" asp-action="EditTicket" asp-route-id="@ticket.TicketID">Edit</a>
-                        <a class="link-danger" asp-controller="Tickets" asp-action="DeleteTicket" asp-route-id="@ticket.TicketID">Delete</a>
-                    </td>
-                </tr>
+                    <tr>
+                        <td>@ticket.TicketID</td>
+                        <td>@ticket.TickietTitle</td>
+                        <td>@ticket.TicketDescriptions</td>
+                        <td>@ticket.TicketPriority</td>
+                        <td>@ticket.TicketCreatedAt</td>
+                        <td>@ticket.responsibleUser</td>
+                        <td>@ticket.ticketCategory</td>
+                        <td>@ticket.ticketStatus</td>
+                        <td>
+                            <a class="link-danger" asp-controller="Tickets" asp-action="EditTicket" asp-route-id="@ticket.TicketID">Edit</a>
+                            <a class="link-danger color-red" asp-controller="Tickets" asp-action="DeleteTicket" asp-route-id="@ticket.TicketID">Delete</a>
+                        </td>
+                    </tr>
                 }
             </tbody>
         </table>

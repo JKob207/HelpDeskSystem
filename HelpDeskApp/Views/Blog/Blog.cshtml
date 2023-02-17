@@ -1,6 +1,20 @@
 ﻿@model List<NewsAPI.Models.Article>
+@{
+    ViewData["Title"] = "Blog";
+}
 
-@foreach(NewsAPI.Models.Article article in Model)
-            {
-                <p>@article.Title</p>
-            }
+<h1 class="text-center p-2">Top 5 most popular hardware articles!</h1>
+
+<section class="blog-section">
+    @foreach (NewsAPI.Models.Article article in Model)
+    {
+        <article class="blog-article">
+            <h3 class="text-center">@article.Title</h3>
+            <h6 class="text-center">@article.Author</h6>
+            <p class="text-justify">@article.Description</p>
+            <div class="read-more-blog">
+                <a class="main-btn text-white" href="@article.Url">Read more</a>
+            </div>
+        </article>
+    }
+</section>

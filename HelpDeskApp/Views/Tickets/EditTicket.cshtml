@@ -1,7 +1,15 @@
 ﻿@model HelpDeskApp.Models.TicketView
+@{
+    ViewData["Title"] = "Edit ticket";
+}
 
 <h1>Edit ticket</h1>
 <div class="container">
+    <div class="row justify-center">
+        <div class="col-sm-12">
+            <p class="text-danger">@ViewData["EditTicketError"]</p>
+        </div>
+    </div>
     <div class="row">
         <div class="col-sm-12">
             @using (Html.BeginForm("EditTicketAction", "Tickets", FormMethod.Post))

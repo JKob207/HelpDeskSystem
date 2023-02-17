@@ -1,0 +1,63 @@
+﻿a:hover
+{
+    text-decoration: none !important;
+}
+
+.navbar, .footer {
+    background-color: #004E89;
+}
+
+.navbar-justify {
+    justify-content: space-around;
+}
+
+.main-btn {
+    border-radius: 15px;
+    background-color: #98473E;
+    padding: 8px 24px !important;
+    font-weight: 700;
+    box-shadow: 4px 3px 0px #383838;
+}
+
+.justify-center
+{
+    justify-content: center;
+}
+
+.login-row {
+    background-color: #AAFAC8;
+    border-radius: 20px;
+    box-shadow: 6px 10px 4px black;
+    padding-block: 20px;
+}
+
+.blog-section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.blog-article {
+    width: 49%;
+    border: 1px solid #919191;
+    padding: 10px;
+    margin: 2px;
+}
+
+.read-more-blog
+{
+    display: flex;
+    justify-content: center;
+    padding-block: 10px;
+}
+
+.color-red {
+    color: #ff0000 !important;
+}
+
+.footer {
+    text-align: center;
+}
+
+

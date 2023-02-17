@@ -1,14 +1,22 @@
 ﻿@using HelpDeskApp.Models
 @model Tickets
+@{
+    ViewData["Title"] = "Add new ticket";
+}
 
-<h1>Here you can add tickets!</h1>
+<h1 class="text-center p-2">Here you can add tickets!</h1>
 
 <div class="container">
-    <div class="row">
+    <div class="row justify-center">
+        <div class="col-sm-12">
+            <p class="text-danger">@ViewData["AddTicketError"]</p>
+        </div>
+    </div>
+    <div class="row login-row">
         <div class="col-sm-12">
             @using (Html.BeginForm("AddTicket", "Tickets", FormMethod.Post))
             {
-                <div class="row">
+                <div class="row justify-center">
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Title </label>
@@ -17,16 +25,18 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row justify-center">
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Descriptions </label>
-                            @Html.TextAreaFor(m => m.Descriptions)
+                            <div>
+                                @Html.TextAreaFor(m => m.Descriptions)
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row justify-center">
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Ticket category </label>
@@ -37,7 +47,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row justify-center">
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Priority </label>
@@ -48,7 +58,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row justify-center">
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Responsible user </label>
@@ -59,9 +69,9 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row justify-center">
                     <div>
-                        <button type="submit" class="btn btn-primary">Add</button>
+                        <button type="submit" class="btn main-btn text-white">Add</button>
                     </div>
                 </div>
             }

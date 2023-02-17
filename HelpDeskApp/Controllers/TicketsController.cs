@@ -200,8 +200,12 @@ namespace HelpDeskApp.Controllers
             int ticketCategoryID = int.Parse(Request.Form["ticketCategory"]);
             int userResponsibleID = int.Parse(Request.Form["responsibleUser"]);
             int currentUserID = int.Parse(TempData["currentUserID"].ToString());
-            Debug.WriteLine("TUTAJ: " + int.Parse(TempData["currentUserID"].ToString()));
             TempData.Keep("currentUserID");
+            if(string.IsNullOrEmpty(_newTicket.Title) || string.IsNullOrEmpty(_newTicket.Priority.ToString()))
+            {
+                ViewData["AddTicketError"] = "Please fill all!";
+                return View();
+            }
             var _Tickets = new Tickets
             {
                 Title = _newTicket.Title,
@@ -333,6 +337,13 @@ namespace HelpDeskApp.Controllers
             }
 
             var ticket = _context.Tickets.Where(m => m.ID == _newTicketView.TicketID).FirstOrDefault();
+
+            if (string.IsNullOrEmpty(_newTicketView.TickietTitle) || string.IsNullOrEmpty(_newTicketView.responsibleUser.ToString()) || string.IsNullOrEmpty(_newTicketView.ticketStatus.ToString()) || string.IsNullOrEmpty(_newTicketView.ticketCategory.ToString()) )
+            {
+                ViewData["EditTicketError"] = "Please fill all!";
+                return View();
+            }
+
             ticket.Title = _newTicketView.TickietTitle;
             ticket.Descriptions = _newTicketView.TicketDescriptions;
             ticket.Priority = int.Parse(Request.Form["priority"]);
