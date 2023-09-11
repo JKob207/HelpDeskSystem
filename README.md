@@ -1,11 +1,46 @@
-﻿#HelpDeskApp
-The application simulates a simple ticket management system. In terms of user management, it allows you to create a new user and log in to their private account. In addition, the application has built-in admin function, which in addition to basic functionalities allows you to manage users (assign admin permissions or delete a given user). The application focuses on managing tickets. You can create new ones, edit them and delete them. In addition, a simple blog has been added to the application, which downloads articles about hardware from the API.
-To download the installation, run git clone and clone the solution to your computer.
-The application is based on SQLite.
+﻿# HelpDeskApp
+Welcome to HelpDeskApp, a simple ticket management system application built using ASP.NET MVC, Entity Framework, SQLite, and MSTest for testing. This application allows users to create, manage, and delete tickets, provides user authentication and authorization, and includes a basic blog that fetches hardware-related articles from an API.
 
-Users:
+## Features
+- **User Management**: Create new user accounts and log in to their private accounts.
+- **Admin Functionality**: Admin users can manage other users by assigning admin permissions or deleting user accounts.
+- **Ticket Management**: Create, edit, and delete tickets efficiently.
+- **Blog**: Access hardware-related articles from an external API.
+- **Databas**e: The application is based on SQLite, providing a lightweight and efficient data storage solution.
+
+## Access
+### Users:
 Login: user
 Password: zaq1@WSX
 
+### Admin:
 Login: admin
 Password: qwerty1234
+
+## Installation
+To run HelpDeskApp on your computer, follow these steps:
+1. Clone the repository to your local machine using Git: git clone https://github.com/yourusername/HelpDeskApp.git
+2. Open the solution in Visual Studio or your preferred development environment that supports ASP.NET MVC.
+3. Build and run the application. Ensure you have the necessary dependencies installed.
+4. Access the application through your web browser at http://localhost:yourport.
+
+## Dependencies
+- ASP.NET MVC
+- Entity Framework
+- SQLite
+- MSTest (for testing)
+
+## Getting Started
+1. Log in to admin account to access admin functionalities.
+2. Log in or create user accounts for regular users.
+3. Admins can assign admin permissions or delete user accounts.
+4. Create, edit, and delete tickets as needed.
+5. Explore the blog section to read hardware-related articles.
+
+## Testing
+This application is equipped with unit tests using MSTest. You can run these tests to ensure the reliability of the application.
+
+To run the tests, follow these steps:
+1. Open the solution in Visual Studio or your preferred development environment.
+2. Open the Test Explorer.
+3. Run the available tests to verify the application's functionality.
