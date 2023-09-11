@@ -19,10 +19,10 @@ Password: qwerty1234
 
 ## Installation
 To run HelpDeskApp on your computer, follow these steps:
-1. Clone the repository to your local machine using Git: git clone https://github.com/yourusername/HelpDeskApp.git
+1. Clone the repository to your local machine using Git: git clone https://github.com/JKob207/HelpDeskSystem.git
 2. Open the solution in Visual Studio or your preferred development environment that supports ASP.NET MVC.
 3. Build and run the application. Ensure you have the necessary dependencies installed.
-4. Access the application through your web browser at http://localhost:yourport.
+4. Access the application through your web browser.
 
 ## Dependencies
 - ASP.NET MVC
